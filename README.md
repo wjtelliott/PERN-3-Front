@@ -3,6 +3,6 @@
 ## This is a PERN Stack project
 
 
-|-------|--------|
 | API URL | Expectation |
+|-------|--------|
 | `/` | Home / index page |
