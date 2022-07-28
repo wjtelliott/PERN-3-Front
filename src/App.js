@@ -3,6 +3,8 @@ import "./App.css";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import Navbar from "./components/Navbar";
+import AuthenticationButton from "./components/AuthenticationButton";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 function App() {
     //change up the MUI theme
@@ -51,9 +53,11 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Navbar />
-            hello world!
+                  <AuthenticationButton />
+                hello world!
         </ThemeProvider>
     );
+
 }
 
 export default App;
