@@ -1,4 +1,6 @@
 import * as React from "react";
+import {useAuth0} from "@auth0/auth0-react";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,10 +16,12 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["MLB", "Soccer", "Other"];
+const settings = ["Profile", "Bets", "Friends", "Groups"];
 
 const Navbar = () => {
+    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -119,7 +123,7 @@ const Navbar = () => {
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        YouBetcha
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
                         {pages.map((page) => (
@@ -132,47 +136,95 @@ const Navbar = () => {
                             </Button>
                         ))}
                     </Box>
-
-                    <Box sx={{flexGrow: 0}}>
-                        <Tooltip title="Open settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{p: 0}}
+                    {isAuthenticated ? (
+                        <Box sx={{flexGrow: 0}}>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="a"
+                                href=""
+                                sx={{
+                                    mr: 2,
+                                    // display: {xs: "flex"},
+                                    // flexGrow: 1,
+                                    // fontFamily: "monospace",
+                                    fontWeight: 700,
+                                    // letterSpacing: ".3rem",
+                                    color: "inherit",
+                                    textDecoration: "none",
+                                }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/static/images/avatar/2.jpg"
-                                />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{mt: "45px"}}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
+                                $755
+                            </Typography>
+                            <Tooltip title="Open settings">
+                                <IconButton
+                                    onClick={handleOpenUserMenu}
+                                    sx={{p: 0}}
+                                >
+                                    <Avatar alt="Ryan Rasmussen" />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{mt: "45px"}}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                {settings.map((setting) => (
+                                    <MenuItem
+                                        key={setting}
+                                        onClick={handleCloseUserMenu}
+                                    >
+                                        <Typography textAlign="center">
+                                            {setting}
+                                        </Typography>
+                                    </MenuItem>
+                                ))}
                                 <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
+                                    key="logout"
+                                    onClick={() =>
+                                        logout({
+                                            returnTo: window.location.origin,
+                                        })
+                                    }
                                 >
                                     <Typography textAlign="center">
-                                        {setting}
+                                        Logout
                                     </Typography>
                                 </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                            </Menu>
+                        </Box>
+                    ) : (
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            href=""
+                            sx={{
+                                mr: 2,
+                                // display: {xs: "flex"},
+                                // flexGrow: 1,
+                                // fontFamily: "monospace",
+                                fontWeight: 700,
+                                // letterSpacing: ".3rem",
+                                color: "inherit",
+                                textDecoration: "none",
+                            }}
+                            onClick={() => loginWithRedirect()}
+                        >
+                            Login
+                        </Typography>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
