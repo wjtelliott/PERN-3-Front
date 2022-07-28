@@ -2,6 +2,7 @@
 import "./App.css";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
+import Navbar from "./components/Navbar";
 
 function App() {
     //change up the MUI theme
@@ -49,6 +50,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
+            <Navbar />
             hello world!
         </ThemeProvider>
     );
