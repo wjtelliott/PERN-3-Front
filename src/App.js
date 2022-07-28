@@ -7,6 +7,7 @@ import AuthenticationButton from "./components/AuthenticationButton";
 import { Auth0Provider } from "@auth0/auth0-react";
 import GameCard from "./components/GameCard"
 
+
 function App() {
     //change up the MUI theme
     const theme = createTheme({
@@ -18,6 +19,9 @@ function App() {
             secondary: {
                 main: "#0dab44",
             },
+            // background: {
+            //     default: "#222222",
+            // },
         },
         // typography: {
         //     fontSize: 14,
@@ -55,11 +59,12 @@ function App() {
             <CssBaseline />
             <Navbar />
             <AuthenticationButton />
+
                 hello world!
             <GameCard sx={{ display: 'inline-block' }} />
+
         </ThemeProvider>
     );
-
 }
 
 export default App;
