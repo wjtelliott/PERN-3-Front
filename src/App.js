@@ -1,12 +1,12 @@
 //import logo from "./logo.svg";
 import "./App.css";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {CssBaseline} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 import Navbar from "./components/Navbar";
 import AuthenticationButton from "./components/AuthenticationButton";
+import PlaceBetModal from "./components/PlaceBetModal";
 import { Auth0Provider } from "@auth0/auth0-react";
 import GameCard from "./components/GameCard"
-
 
 function App() {
     //change up the MUI theme
@@ -23,12 +23,13 @@ function App() {
             //     default: "#222222",
             // },
         },
-        // typography: {
-        //     fontSize: 14,
-        //     fontFamily: "nudista-web, sans-serif",
-        // },
-        shape: {
-            borderRadius: 10,
+      },
+      MuiTab: {
+        defaultProps: {
+          style: {
+            color: "white",
+            textTransform: "none",
+          },
         },
         components: {
             // Name of the component
