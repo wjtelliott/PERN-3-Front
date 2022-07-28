@@ -5,7 +5,8 @@ import { CssBaseline } from "@mui/material";
 import Navbar from "./components/Navbar";
 import AuthenticationButton from "./components/AuthenticationButton";
 import PlaceBetModal from "./components/PlaceBetModal";
-import {Auth0Provider} from "@auth0/auth0-react";
+import { Auth0Provider } from "@auth0/auth0-react";
+import GameCard from "./components/GameCard"
 
 function App() {
     //change up the MUI theme
@@ -59,7 +60,10 @@ function App() {
             <CssBaseline />
             <Navbar />
             <AuthenticationButton />
-            hello world!
+
+                hello world!
+            <GameCard sx={{ display: 'inline-block' }} />
+
         </ThemeProvider>
     );
 }
