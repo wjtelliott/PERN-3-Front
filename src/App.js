@@ -4,6 +4,7 @@ import { CssBaseline } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from "./components/Home/Landing";
 import ProfilePage from "./components/Profile/ProfilePage";
+import MLBPage from "./components/LeaguePages/MLB";
 
 function App() {
     //change up the MUI theme
@@ -54,6 +55,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<LandingPage />} />
                     <Route path='/profile' element={<ProfilePage />} />
+                    <Route path='/mlb' element={<MLBPage />} />
                 </Routes>
             </Router>
         </ThemeProvider>
