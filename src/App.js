@@ -1,10 +1,6 @@
-//import logo from "./logo.svg";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import Navbar from "./components/Navbar";
-import AuthenticationButton from "./components/AuthenticationButton";
-import GameCard from "./components/GameCard";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from "./components/Home/Landing";
 import ProfilePage from "./components/Profile/ProfilePage";
@@ -51,7 +47,6 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            
             {/* 
              * Do we want the react-router here or in the index.js?
              */}
@@ -61,12 +56,6 @@ function App() {
                     <Route path='/profile' element={<ProfilePage />} />
                 </Routes>
             </Router>
-            
-            
-            {/*
-            <AuthenticationButton />
-            hello world!
-            <GameCard sx={{display: "inline-block"}} /> */}
         </ThemeProvider>
     );
 }

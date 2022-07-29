@@ -8,8 +8,7 @@ const ProfilePage = () => {
             <Navbar />
             <Profile />
         </div>
-        
-    )
+    );
 };
 
 export default ProfilePage;

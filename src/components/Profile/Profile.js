@@ -15,7 +15,7 @@ const Profile = () => {
         You must be logged in
         <Link to='/'>Back to home page</Link>
       </div>
-    )
+    );
   }
 
   return (
