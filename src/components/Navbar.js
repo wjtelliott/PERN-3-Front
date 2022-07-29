@@ -15,8 +15,22 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import { Link } from 'react-router-dom';
 
-const pages = ["MLB", "Soccer", "Other"];
+const pages = [
+    {
+        text: 'MLB',
+        linkTo: 'mlb'
+    },
+    {
+        text: 'Soccer',
+        linkTo: 'soccer'
+    },
+    {
+        text: 'Other Games',
+        linkTo: 'other'
+    }
+];
 const settings = ["Profile", "Bets", "Friends", "Groups"];
 
 const Navbar = () => {
@@ -32,7 +46,7 @@ const Navbar = () => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
+    const handleCloseNavMenu = (e) => {
         setAnchorElNav(null);
     };
 
@@ -94,15 +108,24 @@ const Navbar = () => {
                                 display: {xs: "block", md: "none"},
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                            {pages.map(({text: page, linkTo}) => (
+                                <Link
+                                    to={`/${linkTo}`}
+                                    //todo: dynamic styling????
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'white'
+                                    }}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
+                                    <MenuItem
+                                        key={page}
+                                        onClick={handleCloseNavMenu}
+                                    >
+                                        <Typography textAlign="center">
+                                            {page}
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
@@ -126,14 +149,16 @@ const Navbar = () => {
                         YouBetcha
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{my: 2, color: "white", display: "block"}}
-                            >
-                                {page}
-                            </Button>
+                        {pages.map(({text: page, linkTo}) => (
+                            <Link to={`/${linkTo}`}>
+                                <Button
+                                    key={page}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{my: 2, color: "white", display: "block"}}
+                                >
+                                    {page}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
                     {isAuthenticated ? (

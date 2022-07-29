@@ -7,3 +7,4 @@
 |-------|--------|
 | `/` | Home / index page |
 | `/profile` | User profile page |
+| `/mlb` | MLB Page |
