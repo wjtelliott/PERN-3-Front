@@ -6,3 +6,4 @@
 | API URL | Expectation |
 |-------|--------|
 | `/` | Home / index page |
+| `/profile` | User profile page |
