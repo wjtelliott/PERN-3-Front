@@ -1,12 +1,13 @@
 //import logo from "./logo.svg";
 import "./App.css";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {CssBaseline} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 import Navbar from "./components/Navbar";
 import AuthenticationButton from "./components/AuthenticationButton";
-import PlaceBetModal from "./components/PlaceBetModal";
-import {Auth0Provider} from "@auth0/auth0-react";
 import GameCard from "./components/GameCard";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LandingPage from "./components/Home/Landing";
+import ProfilePage from "./components/Profile/ProfilePage";
 
 function App() {
     //change up the MUI theme
@@ -50,10 +51,22 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Navbar />
+            
+            {/* 
+             * Do we want the react-router here or in the index.js?
+             */}
+            <Router>
+                <Routes>
+                    <Route path='/' element={<LandingPage />} />
+                    <Route path='/profile' element={<ProfilePage />} />
+                </Routes>
+            </Router>
+            
+            
+            {/*
             <AuthenticationButton />
             hello world!
-            <GameCard sx={{display: "inline-block"}} />
+            <GameCard sx={{display: "inline-block"}} /> */}
         </ThemeProvider>
     );
 }
