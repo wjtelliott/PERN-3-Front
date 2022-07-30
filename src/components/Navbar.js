@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useAuth0} from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,7 +15,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { Link } from 'react-router-dom';
 
 // There is more than likely a better way to make this DRY
 // The .map functions below will now make the links text === .text
@@ -55,50 +54,50 @@ const settings = [
 ];
 
 const Navbar = () => {
-    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-    const handleCloseNavMenu = (e) => {
-        setAnchorElNav(null);
-    };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
-    return (
-        <AppBar position="static" enableColorOnDark>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <MonetizationOnIcon
-                        sx={{display: {xs: "none", md: "flex"}, mr: 1}}
-                    />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: {xs: "none", md: "flex"},
-                            // fontFamily: "monospace",
-                            fontWeight: 700,
-                            // letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        YouBetcha
-                    </Typography>
+  return (
+    <AppBar position="static" enableColorOnDark>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <MonetizationOnIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              // fontFamily: "monospace",
+              fontWeight: 700,
+              // letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            YouBetcha
+          </Typography>
 
                     <Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
                         <IconButton

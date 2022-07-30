@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.bettingGridItem {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.gameCard {
+  min-width: 250px;
+}
