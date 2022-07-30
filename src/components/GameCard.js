@@ -7,12 +7,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import PlaceBetModal from "./PlaceBetModal";
 import "../App.css";
-import { testData } from "./Data-Handling/TestData";
+// import { testData } from "./Data-Handling/TestData";
 
 const GameCard = (props) => {
   const [gameData, setGameData] = useState(props.gameData);
+  console.log(gameData);
   return (
-    <Card sx={{ maxWidth: 375 }}>
+    <Card sx={{ maxWidth: 375, height: 300 }}>
       <CardContent>
         <Box display="grid" gridTemplateColumns="repeat(6, 1fr)" gap={2}>
           <Box gridColumn="span 2">{gameData.home_team}</Box>
@@ -22,7 +23,7 @@ const GameCard = (props) => {
           <Box gridColumn="span 2">team short Name team odds</Box>
           <Box gridColumn="span 2">
             <CardActions sx={{ display: "inline-block" }}>
-              <Button size="small">Bet</Button>
+              <PlaceBetModal />
             </CardActions>
           </Box>
           <Box gridColumn="span 2">team short Name team odds</Box>
