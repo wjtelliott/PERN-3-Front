@@ -2,8 +2,8 @@ import React from "react";
 import GameCard from "./GameCard";
 import { Grid } from "@mui/material";
 import "../App.css";
-// import { mlbData } from "./Data-Handling/TestData";
-import { mlbData } from "./Data-Handling/TestDataMLBOnly";
+import { mlbData } from "./Data-Handling/TestData";
+// import { mlbData } from "./Data-Handling/TestDataMLBOnly";
 export default function BetCardGrid() {
   return (
     <Grid
@@ -13,7 +13,7 @@ export default function BetCardGrid() {
       justifyContent="space-around"
       className="bettingGridItem"
     >
-      {mlbData.slice(0, 8).map((game) => (
+      {mlbData.slice(0, 8).map((game, i) => (
         <Grid
           item
           xs={12}

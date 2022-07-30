@@ -11,22 +11,28 @@ import "../App.css";
 
 const GameCard = (props) => {
   const [gameData, setGameData] = useState(props.gameData);
-  console.log(gameData);
+  // console.log(gameData.bookmakers[0].markets[0].outcomes);
+  const [homeOdds, setHomeOdds] = useState(
+    gameData.bookmakers[0].markets[0].outcomes
+  );
+  console.log(homeOdds);
   return (
-    <Card sx={{ maxWidth: 375, height: 300 }}>
+    <Card sx={{ maxWidth: 400, height: 300 }}>
       <CardContent>
         <Box display="grid" gridTemplateColumns="repeat(6, 1fr)" gap={2}>
           <Box gridColumn="span 2">{gameData.home_team}</Box>
+          <Box gridColumn="span 2">VS</Box>
           <Box gridColumn="span 2">{gameData.away_team}</Box>
-          <Box gridColumn="span 2">{"home logo"}</Box>
-          <Box gridColumn="span 2">{"away logo"}</Box>
-          <Box gridColumn="span 2">team short Name team odds</Box>
+          {/* <Box gridColumn="span 2">{"home logo"}</Box>
+          <Box gridColumn="span 2">{"away logo"}</Box> */}
+          {/* <Box gridColumn="span 2">team short Name team odds</Box> */}
+          <Box gridColumn="span 2"></Box>
+
           <Box gridColumn="span 2">
             <CardActions sx={{ display: "inline-block" }}>
               <PlaceBetModal />
             </CardActions>
           </Box>
-          <Box gridColumn="span 2">team short Name team odds</Box>
         </Box>
       </CardContent>
     </Card>
