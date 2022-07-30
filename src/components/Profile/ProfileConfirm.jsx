@@ -16,7 +16,7 @@ const ConfirmProfilePage = () => {
         }
 
         const sendUserData = async () => {
-            const url = `http://localhost:3001/newuser`;
+            const url = `http://localhost:3001/user/newuser`;
             const payload = {
                 ...user
             };
