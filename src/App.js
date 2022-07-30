@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/Home/Landing";
 import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
+import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 
 function App() {
   //change up the MUI theme
@@ -46,19 +47,20 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {/*
-       * Do we want the react-router here or in the index.js?
-       */}
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/mlb" element={<MLBPage />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {/* 
+           * Do we want the react-router here or in the index.js?
+           */}
+          <Router>
+              <Routes>
+                  <Route path='/' element={<LandingPage />} />
+                  <Route path='/profile' element={<ProfilePage />} />
+                  <Route path='/profile/confirm' element={<ConfirmProfilePage />} />
+                  <Route path='/mlb' element={<MLBPage />} />
+              </Routes>
+          </Router>
+      </ThemeProvider>
   );
 }
 
