@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar";
-import GameCard from "../GameCard";
+import Navbar from "../Shared/Navbar";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
