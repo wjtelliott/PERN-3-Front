@@ -1,6 +1,6 @@
 import React from "react";
 import BetCardGrid from "../BetCardGrid";
-import Navbar from "../Navbar";
+import Navbar from "../Shared/Navbar";
 
 const MLBPage = () => {
   return (
