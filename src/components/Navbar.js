@@ -17,6 +17,10 @@ import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Link } from 'react-router-dom';
 
+// There is more than likely a better way to make this DRY
+// The .map functions below will now make the links text === .text
+// and the link will redirect to .linkTo
+//todo the styling on this needs to be made dynamic. currently does textdecor none and color white
 const pages = [
     {
         text: 'MLB',
@@ -31,7 +35,24 @@ const pages = [
         linkTo: 'other'
     }
 ];
-const settings = ["Profile", "Bets", "Friends", "Groups"];
+const settings = [
+    {
+        text: 'Profile',
+        linkTo: 'profile'
+    },
+    {
+        text: 'Bets',
+        linkTo: 'bets'
+    },
+    {
+        text: 'Friends',
+        linkTo: 'friends'
+    },
+    {
+        text: 'Groups',
+        linkTo: 'groups'
+    }
+];
 
 const Navbar = () => {
     const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
@@ -110,6 +131,7 @@ const Navbar = () => {
                         >
                             {pages.map(({text: page, linkTo}) => (
                                 <Link
+                                    key={page}
                                     to={`/${linkTo}`}
                                     //todo: dynamic styling????
                                     style={{
@@ -118,7 +140,6 @@ const Navbar = () => {
                                     }}
                                 >
                                     <MenuItem
-                                        key={page}
                                         onClick={handleCloseNavMenu}
                                     >
                                         <Typography textAlign="center">
@@ -150,9 +171,14 @@ const Navbar = () => {
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
                         {pages.map(({text: page, linkTo}) => (
-                            <Link to={`/${linkTo}`}>
+                            <Link
+                                key={page}
+                                to={`/${linkTo}`}
+                                style={{
+                                    textDecoration: 'none'
+                                }}
+                            >
                                 <Button
-                                    key={page}
                                     onClick={handleCloseNavMenu}
                                     sx={{my: 2, color: "white", display: "block"}}
                                 >
@@ -205,15 +231,23 @@ const Navbar = () => {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
-                                    <MenuItem
+                                {settings.map(({text: setting, linkTo}) => (
+                                    <Link
                                         key={setting}
-                                        onClick={handleCloseUserMenu}
+                                        to={`${linkTo}`}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'white'
+                                        }}
                                     >
-                                        <Typography textAlign="center">
-                                            {setting}
-                                        </Typography>
-                                    </MenuItem>
+                                        <MenuItem
+                                            onClick={handleCloseUserMenu}
+                                        >
+                                            <Typography textAlign="center">
+                                                {setting}
+                                            </Typography>
+                                        </MenuItem>
+                                    </Link>
                                 ))}
                                 <MenuItem
                                     key="logout"

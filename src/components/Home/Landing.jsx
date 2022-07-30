@@ -30,8 +30,6 @@ const LandingPage = () => {
                 </Typography>
             </Box>
 
-            <Link to='/profile'>Test view profile page link</Link>
-
             <Box
                 sx={{
                     display: 'flex',
