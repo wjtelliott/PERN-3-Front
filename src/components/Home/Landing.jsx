@@ -39,11 +39,7 @@ const LandingPage = () => {
           justifyContent: "center",
         }}
       >
-        {/* 
-                
-                    Not sure what we want to prioritize on the home page.
-                    
-                */}
+        {/*  Not sure what we want to prioritize on the home page. */}
 
         {/* Sorry, I temporarily broke this page because I changed game card to require props */}
         {/* <Box
