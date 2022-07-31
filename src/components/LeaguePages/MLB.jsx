@@ -3,16 +3,17 @@ import BetCardGrid from "../BetCardGrid";
 import Navbar from "../Shared/Navbar";
 
 const MLBPage = () => {
-  return (
-    <div>
-      <Navbar></Navbar>
-      <img
-        src="https://a.espncdn.com/photo/2022/0603/r1020894_1296x518_5-2.jpg"
-        className="HeroImg"
-      />
-      <BetCardGrid></BetCardGrid>
-    </div>
-  );
+    return (
+        <>
+            <img
+                src="https://a.espncdn.com/photo/2022/0603/r1020894_1296x518_5-2.jpg"
+                className="HeroImg"
+                alt="MLB Player"
+                width="100%"
+            />
+            <BetCardGrid />
+        </>
+    );
 };
 
 export default MLBPage;
