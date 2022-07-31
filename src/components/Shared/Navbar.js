@@ -12,6 +12,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import UserSettings from "./UserSettings";
 import NavBarPage from "./NavBarPages";
+import { Link } from 'react-router-dom';
 
 // There is more than likely a better way to make these pages and settings arrays DRY
 // The .map functions below will now make the links text === .text
@@ -81,7 +82,6 @@ const Navbar = () => {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
                         href="/"
                         sx={{
                         mr: 2,
@@ -93,7 +93,15 @@ const Navbar = () => {
                         textDecoration: "none",
                         }}
                     >
-                        YouBetcha
+                        <Link
+                            to='/'
+                            style={{
+                                textDecoration: 'none',
+                                color: 'white'
+                            }}
+                        >
+                            YouBetcha
+                        </Link>
                     </Typography>
 
                     <Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
