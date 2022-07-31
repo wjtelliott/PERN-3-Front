@@ -3,6 +3,7 @@ import Navbar from "../Shared/Navbar";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import BetCardGrid from "../BetCardGrid";
 
 const LandingPage = () => {
   return (
@@ -29,45 +30,61 @@ const LandingPage = () => {
         </Typography>
       </Box>
 
-      <Link to="/profile">Test view profile page link</Link>
-
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
-        {/*  Not sure what we want to prioritize on the home page. */}
-
-        {/* Sorry, I temporarily broke this page because I changed game card to require props */}
-        {/* <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            width: 1 / 2,
-          }}
-        >
-          Games to bet on
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-        </Box>
-
         <Box
           sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            width: 1 / 2,
+            width: '90%'
           }}
+          data-aos='fade-up'
         >
-          Leaderboards?
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-          <GameCard sx={{ margin: 3, display: "inline-block" }} />
-        </Box> */}
+          Games to bet on
+          <BetCardGrid />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            width: '90%'
+          }}
+          data-aos='fade-up'
+        >
+          Games to lose on:
+          <BetCardGrid />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            width: '90%'
+          }}
+          data-aos='fade-up'
+        >
+          Games games games
+          <BetCardGrid />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            width: '90%'
+          }}
+          data-aos='fade-up'
+        >
+          Some more games
+          <BetCardGrid />
+        </Box>
       </Box>
     </div>
   );

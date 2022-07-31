@@ -22,7 +22,8 @@ const ConfirmProfilePage = () => {
         const sendUserData = async () => {
             const url = `http://localhost:3001/user/newuser`;
             const payload = {
-                ...user
+                ...user,
+                // If we want more user data sent to the back-end, we can add that here
             };
 
             const response = await fetch(url, 

@@ -73,7 +73,7 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar position="static" enableColorOnDark>
+        <AppBar position="sticky" enableColorOnDark>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <MonetizationOnIcon
