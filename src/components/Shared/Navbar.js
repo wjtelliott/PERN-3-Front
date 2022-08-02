@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,7 +12,10 @@ import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import UserSettings from "./UserSettings";
 import NavBarPage from "./NavBarPages";
-import { Link } from 'react-router-dom';
+import {Link} from "react-router-dom";
+import {Button} from "@mui/material";
+import Brightness3Icon from "@mui/icons-material/Brightness3";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 // There is more than likely a better way to make these pages and settings arrays DRY
 // The .map functions below will now make the links text === .text
@@ -20,39 +23,40 @@ import { Link } from 'react-router-dom';
 //todo the styling on this needs to be made dynamic. currently does textdecor none and color white
 const pages = [
     {
-        text: 'MLB',
-        linkTo: 'mlb'
+        text: "MLB",
+        linkTo: "mlb",
     },
     {
-        text: 'Soccer',
-        linkTo: 'soccer'
+        text: "Soccer",
+        linkTo: "soccer",
     },
     {
-        text: 'Other Games',
-        linkTo: 'other'
-    }
+        text: "Other Games",
+        linkTo: "other",
+    },
 ];
 const settings = [
     {
-        text: 'Profile',
-        linkTo: 'profile'
+        text: "Profile",
+        linkTo: "profile",
     },
     {
-        text: 'Bets',
-        linkTo: 'bets'
+        text: "Bets",
+        linkTo: "bets",
     },
     {
-        text: 'Friends',
-        linkTo: 'friends'
+        text: "Friends",
+        linkTo: "friends",
     },
     {
-        text: 'Groups',
-        linkTo: 'groups'
-    }
+        text: "Groups",
+        linkTo: "groups",
+    },
 ];
 
-const Navbar = () => {
-    const { isAuthenticated, loginWithRedirect, logout, user, isLoading } = useAuth0();
+export default function Navbar({darkMode, toggleDarkMode}) {
+    const {isAuthenticated, loginWithRedirect, logout, user, isLoading} =
+        useAuth0();
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -72,32 +76,34 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
+    const icon = darkMode ? <Brightness7Icon /> : <Brightness3Icon />;
+
     return (
         <AppBar position="sticky" enableColorOnDark>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <MonetizationOnIcon
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                        sx={{display: {xs: "none", md: "flex"}, mr: 1}}
                     />
                     <Typography
                         variant="h6"
                         noWrap
                         href="/"
                         sx={{
-                        mr: 2,
-                        display: { xs: "none", md: "flex" },
-                        // fontFamily: "monospace",
-                        fontWeight: 700,
-                        // letterSpacing: ".3rem",
-                        color: "inherit",
-                        textDecoration: "none",
+                            mr: 2,
+                            display: {xs: "none", md: "flex"},
+                            // fontFamily: "monospace",
+                            fontWeight: 700,
+                            // letterSpacing: ".3rem",
+                            color: "inherit",
+                            textDecoration: "none",
                         }}
                     >
                         <Link
-                            to='/'
+                            to="/"
                             style={{
-                                textDecoration: 'none',
-                                color: 'white'
+                                textDecoration: "none",
+                                color: "white",
                             }}
                         >
                             YouBetcha
@@ -147,14 +153,14 @@ const Navbar = () => {
                         component="a"
                         href=""
                         sx={{
-                        mr: 2,
-                        display: {xs: "flex", md: "none"},
-                        flexGrow: 1,
-                        fontFamily: "monospace",
-                        fontWeight: 700,
-                        letterSpacing: ".3rem",
-                        color: "inherit",
-                        textDecoration: "none",
+                            mr: 2,
+                            display: {xs: "flex", md: "none"},
+                            flexGrow: 1,
+                            fontFamily: "monospace",
+                            fontWeight: 700,
+                            letterSpacing: ".3rem",
+                            color: "inherit",
+                            textDecoration: "none",
                         }}
                     >
                         YouBetcha
@@ -165,26 +171,33 @@ const Navbar = () => {
                             isMedia={false}
                             handleCloseNavMenu={handleCloseNavMenu}
                         />
+
+                        <IconButton
+                            edge="end"
+                            color="inherit"
+                            aria-label="mode"
+                            onClick={toggleDarkMode}
+                        >
+                            {icon}
+                        </IconButton>
                     </Box>
-                    {
-                        !isLoading ?
-                            <UserSettings
-                                userPicture={user?.picture}
-                                loggedIn={isAuthenticated}
-                                loginWithRedirect={loginWithRedirect}
-                                logout={logout}
-                                settings={settings}
-                                handleCloseUserMenu={handleCloseUserMenu}
-                                handleOpenUserMenu={handleOpenUserMenu}
-                                anchorElUser={anchorElUser}
-                                userId={user?.sub}
-                            />
-                        :
-                            <Typography>Loading User Data...</Typography>
-                    }
+                    {!isLoading ? (
+                        <UserSettings
+                            userPicture={user?.picture}
+                            loggedIn={isAuthenticated}
+                            loginWithRedirect={loginWithRedirect}
+                            logout={logout}
+                            settings={settings}
+                            handleCloseUserMenu={handleCloseUserMenu}
+                            handleOpenUserMenu={handleOpenUserMenu}
+                            anchorElUser={anchorElUser}
+                            userId={user?.sub}
+                        />
+                    ) : (
+                        <Typography>Loading User Data...</Typography>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
     );
-};
-export default Navbar;
+}

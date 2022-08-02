@@ -4,10 +4,11 @@ import {Grid} from "@mui/material";
 import "../App.css";
 import {mlbData} from "./Data-Handling/TestData";
 // import { mlbData } from "./Data-Handling/TestDataMLBOnly";
+
+// soccer_usa_mls   basketball_wnba
 export default function BetCardGrid({sport, games}) {
     const [gameData, setGameData] = useState([]);
-    console.log("sport", sport);
-    console.log("games", games);
+
     let api_url;
     if (games === "upcoming") {
         api_url = `${process.env.REACT_APP_BACKEND_API_URL}/game/upcoming`;

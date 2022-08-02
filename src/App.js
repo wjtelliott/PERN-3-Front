@@ -1,4 +1,5 @@
 import "./App.css";
+import React, {useEffect, useState} from "react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
@@ -10,8 +11,15 @@ import Navbar from "./components/Shared/Navbar";
 import Profile from "./components/Profile/Profile";
 
 function App() {
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+        console.log(darkMode);
+    };
+
     //change up the MUI theme
-    const theme = createTheme({
+    const darkTheme = {
         palette: {
             mode: "dark",
             primary: {
@@ -49,16 +57,56 @@ function App() {
                 },
             },
         },
-    });
+    };
+    const lightTheme = {
+        palette: {
+            mode: "light",
+            primary: {
+                main: "#274c77",
+            },
+            secondary: {
+                main: "#0dab44",
+            },
+            // background: {
+            //     default: "#222222",
+            // },
+        },
+        shape: {
+            borderRadius: 15,
+        },
+        components: {
+            // Name of the component
+            MuiButtonBase: {
+                defaultProps: {
+                    // The props to change the default for.
+                    disableRipple: true, // No more ripple, on the whole application 💣!
+                    style: {
+                        textTransform: "none",
+                        // color: "white",
+                        // borderRadius: 20,
+                    },
+                },
+            },
+            MuiTab: {
+                defaultProps: {
+                    style: {
+                        color: "white",
+                        textTransform: "none",
+                    },
+                },
+            },
+        },
+    };
+    const appliedTheme = createTheme(darkMode ? darkTheme : lightTheme);
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={appliedTheme}>
             <CssBaseline />
             {/*
              * Do we want the react-router here or in the index.js?
              */}
             <Router>
-                <Navbar />
+                <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/profile" element={<Profile />} />
