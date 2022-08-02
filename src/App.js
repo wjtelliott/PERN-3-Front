@@ -1,13 +1,13 @@
 import "./App.css";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {CssBaseline} from "@mui/material";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/Home/Landing";
 import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
-import Profile from "./components/Profile/Profile";
+import { ApiUrls } from "./context/APIContext";
 
 function App() {
     //change up the MUI theme
@@ -51,26 +51,40 @@ function App() {
         },
     });
 
-    return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {/*
-             * Do we want the react-router here or in the index.js?
-             */}
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route
-                        path="/profile/confirm"
-                        element={<ConfirmProfilePage />}
-                    />
-                    <Route path="/mlb" element={<MLBPage />} />
-                </Routes>
-            </Router>
-        </ThemeProvider>
-    );
+	return (
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<ApiUrls.Provider
+				value={{
+					getUserBalanceUrl: (userId) => {
+						return (
+							(process.env.REACT_APP_USER_BALANCE_URL ??
+								"http://localhost:3001/user/balance/") + userId
+						);
+					},
+					getUserBetsUrl: (userId) => {
+						return (
+							(process.env.REACT_APP_USER_BETS_URL ??
+								"http://localhost:3001/user/profile/") + userId
+						);
+					},
+				}}
+			>
+				<Router>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<LandingPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
+						<Route
+							path="/profile/confirm"
+							element={<ConfirmProfilePage />}
+						/>
+						<Route path="/mlb" element={<MLBPage />} />
+					</Routes>
+				</Router>
+			</ApiUrls.Provider>
+		</ThemeProvider>
+	);
 }
 
 export default App;
