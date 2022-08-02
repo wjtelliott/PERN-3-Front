@@ -20,6 +20,7 @@ const Profile = () => {
 						fontWeight: 700,
 						color: "inherit",
 						textDecoration: "none",
+						display: { xs: "block", sm: "block" },
 					}}
 				>
 					Loading your data
@@ -39,25 +40,27 @@ const Profile = () => {
 			>
 				<Typography
 					variant="h4"
+					textAlign="center"
 					sx={{
-						mx: 33,
+						mx: { xs: 3, sm: 3, md: 33 },
 						my: 5,
-						display: { xs: "none", md: "flex" },
 						fontWeight: 700,
 						color: "inherit",
 						textDecoration: "none",
+						display: { xs: "block", sm: "block" },
 					}}
 				>
 					You must be logged in to view this page.
 				</Typography>
 				<Typography
 					variant="h6"
+					textAlign="center"
 					sx={{
-						mx: 33,
-						display: { xs: "none", md: "flex" },
+						mx: { xs: 3, sm: 3, md: 33 },
 						fontWeight: 700,
 						color: "inherit",
 						textDecoration: "none",
+						display: { xs: "block", sm: "block" },
 					}}
 				>
 					Click
