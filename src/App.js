@@ -59,6 +59,12 @@ function App() {
 								"http://localhost:3001/user/balance/") + userId
 						);
 					},
+					getUserBetsUrl: (userId) => {
+						return (
+							(process.env.REACT_APP_USER_BETS_URL ??
+								"http://localhost:3001/user/profile/") + userId
+						);
+					},
 				}}
 			>
 				<Router>
@@ -74,7 +80,6 @@ function App() {
 					</Routes>
 				</Router>
 			</ApiUrls.Provider>
-
 		</ThemeProvider>
 	);
 }
