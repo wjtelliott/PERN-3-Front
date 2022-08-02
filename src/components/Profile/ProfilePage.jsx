@@ -1,14 +1,14 @@
-import React from 'react';
-import Navbar from '../Shared/Navbar';
-import Profile from './Profile';
+import React from "react";
+import Profile from "./Profile";
+import ProfileBets from "./ProfileBets";
 
 const ProfilePage = () => {
-    return (
-        <div>
-            <Navbar />
-            <Profile />
-        </div>
-    );
+	return (
+		<div>
+			<Profile />
+			<ProfileBets />
+		</div>
+	);
 };
 
 export default ProfilePage;
