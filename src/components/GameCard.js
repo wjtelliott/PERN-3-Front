@@ -12,10 +12,10 @@ import "../App.css";
 const GameCard = (props) => {
   const [gameData, setGameData] = useState(props.gameData);
   // console.log(gameData.bookmakers[0].markets[0].outcomes);
-  const [homeOdds, setHomeOdds] = useState(
+  const [teamOdds, setHomeOdds] = useState(
     gameData.bookmakers[0].markets[0].outcomes
   );
-  console.log(homeOdds);
+  console.log("teamOdds: ", teamOdds);
   return (
     <Card sx={{ maxWidth: 400, height: 300 }}>
       <CardContent>
@@ -26,13 +26,14 @@ const GameCard = (props) => {
           {/* <Box gridColumn="span 2">{"home logo"}</Box>
           <Box gridColumn="span 2">{"away logo"}</Box> */}
           {/* <Box gridColumn="span 2">team short Name team odds</Box> */}
-          <Box gridColumn="span 2"></Box>
+          <Box gridColumn="span 2">{teamOdds[1].price}</Box>
 
           <Box gridColumn="span 2">
             <CardActions sx={{ display: "inline-block" }}>
               <PlaceBetModal />
             </CardActions>
           </Box>
+          <Box gridColumn="span 2">{teamOdds[0].price}</Box>
         </Box>
       </CardContent>
     </Card>
