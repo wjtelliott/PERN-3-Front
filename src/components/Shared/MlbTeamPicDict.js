@@ -57,4 +57,6 @@ export const MlbTeamPics = {
         "https://upload.wikimedia.org/wikipedia/en/4/41/Texas_Rangers.svg",
     "Washington Nationals":
         "https://upload.wikimedia.org/wikipedia/commons/a/a3/Washington_Nationals_logo.svg",
+    "Minnesota Twins":
+        "https://upload.wikimedia.org/wikipedia/en/b/b4/Minnesota_Twins_logo_%28low_res%29.svg",
 };

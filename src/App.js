@@ -24,6 +24,9 @@ function App() {
             //     default: "#222222",
             // },
         },
+        shape: {
+            borderRadius: 15,
+        },
         components: {
             // Name of the component
             MuiButtonBase: {

@@ -11,7 +11,7 @@ const MLBPage = () => {
                 alt="MLB Player"
                 width="100%"
             />
-            <BetCardGrid />
+            <BetCardGrid sport="baseball_mlb" games="upcoming" />
         </>
     );
 };
