@@ -7,6 +7,7 @@ import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
+import { ApiUrls } from "./context/APIContext";
 
 function App() {
 	//change up the MUI theme
@@ -50,21 +51,30 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			{/*
-			 * Do we want the react-router here or in the index.js?
-			 */}
-			<Router>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<LandingPage />} />
-					<Route path="/profile" element={<ProfilePage />} />
-					<Route
-						path="/profile/confirm"
-						element={<ConfirmProfilePage />}
-					/>
-					<Route path="/mlb" element={<MLBPage />} />
-				</Routes>
-			</Router>
+			<ApiUrls.Provider
+				value={{
+					getUserBalanceUrl: (userId) => {
+						return (
+							(process.env.REACT_APP_USER_BALANCE_URL ??
+								"http://localhost:3001/user/balance/") + userId
+						);
+					},
+				}}
+			>
+				<Router>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<LandingPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
+						<Route
+							path="/profile/confirm"
+							element={<ConfirmProfilePage />}
+						/>
+						<Route path="/mlb" element={<MLBPage />} />
+					</Routes>
+				</Router>
+			</ApiUrls.Provider>
+
 		</ThemeProvider>
 	);
 }
