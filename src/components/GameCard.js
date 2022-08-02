@@ -11,11 +11,10 @@ import "../App.css";
 
 const GameCard = (props) => {
   const [gameData, setGameData] = useState(props.gameData);
-  // console.log(gameData.bookmakers[0].markets[0].outcomes);
   const [teamOdds, setHomeOdds] = useState(
     gameData.bookmakers[0].markets[0].outcomes
   );
-  console.log("teamOdds: ", teamOdds);
+  
   return (
     <Card sx={{ maxWidth: 400, height: 300 }}>
       <CardContent>
