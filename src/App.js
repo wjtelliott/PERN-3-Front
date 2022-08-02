@@ -74,6 +74,7 @@ function App() {
 					</Routes>
 				</Router>
 			</ApiUrls.Provider>
+
 		</ThemeProvider>
 	);
 }
