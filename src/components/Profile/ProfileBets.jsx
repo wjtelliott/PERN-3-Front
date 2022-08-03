@@ -22,7 +22,7 @@ export default function ProfileBets() {
             if (isLoading || !isAuthenticated) return;
             const url =
                 (process.env.REACT_APP_GET_USER_BETS_URL ??
-                    `http://localhost:3001/users/profile/`) + user.sub;
+                    `http://localhost:3001/bets/profile/`) + user.sub;
             const response = await fetch(url);
             const resData = await response.json();
             setUserBets(resData);
