@@ -8,7 +8,6 @@ import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
-import { ApiUrls } from "./context/APIContext";
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
@@ -109,7 +108,7 @@ function App() {
                 <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                     <Route
                         path="/profile/confirm"
                         element={<ConfirmProfilePage />}
