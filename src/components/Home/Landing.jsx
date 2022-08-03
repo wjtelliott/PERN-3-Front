@@ -51,7 +51,7 @@ const LandingPage = () => {
                     data-aos="fade-up"
                 >
                     Games to bet on
-                    <BetCardGrid />
+                    <BetCardGrid sport="baseball_mlb" games="upcoming" />
                 </Box>
                 <Box
                     sx={{

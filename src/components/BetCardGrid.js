@@ -1,10 +1,35 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import GameCard from "./GameCard";
 import {Grid} from "@mui/material";
 import "../App.css";
 import {mlbData} from "./Data-Handling/TestData";
 // import { mlbData } from "./Data-Handling/TestDataMLBOnly";
-export default function BetCardGrid() {
+export default function BetCardGrid({sport, games}) {
+    const [gameData, setGameData] = useState([]);
+    console.log("sport", sport);
+    console.log("games", games);
+    let api_url;
+    if (games === "upcoming") {
+        api_url = `${process.env.REACT_APP_BACKEND_API_URL}/game/upcoming`;
+    } else if (games === "scores") {
+        api_url = `${process.env.REACT_APP_SPORTS_API}/${sport}/${games}/?apiKey=${process.env.REACT_APP_SPORTS_API_KEY}`;
+    }
+
+    useEffect(() => {
+        document.title = `MLB | YouBetcha`;
+        const fetchData = async () => {
+            const response = await fetch(api_url);
+            const resData = await response.json();
+            // console.log("resData", resData);
+            if (resData) {
+                setGameData(resData);
+            } else {
+                setGameData("Not found");
+            }
+        };
+        fetchData();
+    }, []);
+
     return (
         <Grid
             container
@@ -14,7 +39,8 @@ export default function BetCardGrid() {
             className="bettingGridItem"
             // sx={{marginTop: "-150px"}}
         >
-            {mlbData.slice(0, 8).map((game, i) => (
+            {/* {gameData.slice(0, 8).map((game, i) => ( */}
+            {gameData.map((game, i) => (
                 <Grid
                     item
                     xs={12}
@@ -27,8 +53,9 @@ export default function BetCardGrid() {
                         justifySelf: "center",
                     }}
                     style={{textAlign: "center"}}
+                    key={game.game_id}
                 >
-                    <GameCard gameData={game} />
+                    <GameCard gameData={game} key={game.game_id} />
                 </Grid>
             ))}
         </Grid>

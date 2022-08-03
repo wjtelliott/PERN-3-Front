@@ -10,43 +10,46 @@ import Navbar from "./components/Shared/Navbar";
 import { ApiUrls } from "./context/APIContext";
 
 function App() {
-	//change up the MUI theme
-	const theme = createTheme({
-		palette: {
-			mode: "dark",
-			primary: {
-				main: "#274c77",
-			},
-			secondary: {
-				main: "#0dab44",
-			},
-			// background: {
-			//     default: "#222222",
-			// },
-		},
-		components: {
-			// Name of the component
-			MuiButtonBase: {
-				defaultProps: {
-					// The props to change the default for.
-					disableRipple: true, // No more ripple, on the whole application 💣!
-					style: {
-						textTransform: "none",
-						// color: "white",
-						// borderRadius: 20,
-					},
-				},
-			},
-			MuiTab: {
-				defaultProps: {
-					style: {
-						color: "white",
-						textTransform: "none",
-					},
-				},
-			},
-		},
-	});
+    //change up the MUI theme
+    const theme = createTheme({
+        palette: {
+            mode: "dark",
+            primary: {
+                main: "#274c77",
+            },
+            secondary: {
+                main: "#0dab44",
+            },
+            // background: {
+            //     default: "#222222",
+            // },
+        },
+        shape: {
+            borderRadius: 15,
+        },
+        components: {
+            // Name of the component
+            MuiButtonBase: {
+                defaultProps: {
+                    // The props to change the default for.
+                    disableRipple: true, // No more ripple, on the whole application 💣!
+                    style: {
+                        textTransform: "none",
+                        // color: "white",
+                        // borderRadius: 20,
+                    },
+                },
+            },
+            MuiTab: {
+                defaultProps: {
+                    style: {
+                        color: "white",
+                        textTransform: "none",
+                    },
+                },
+            },
+        },
+    });
 
 	return (
 		<ThemeProvider theme={theme}>
