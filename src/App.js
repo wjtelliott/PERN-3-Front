@@ -8,7 +8,7 @@ import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
-import Profile from "./components/Profile/Profile";
+import { ApiUrls } from "./context/APIContext";
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
