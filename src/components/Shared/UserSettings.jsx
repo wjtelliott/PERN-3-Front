@@ -25,7 +25,7 @@ const UserSettings = ({
         const getData = async () => {
             const url =
                 (process.env.REACT_APP_USER_GET_BALANCE ??
-                    `http://localhost:3001/balance/`) + userId;
+                    `http://localhost:3001/users/balance/`) + userId;
             const response = await fetch(url);
             const resData = await response.json();
             return resData;
