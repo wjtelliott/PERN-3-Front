@@ -11,7 +11,7 @@ export default function BetCardGrid({sport, games}) {
 
     let api_url;
     if (games === "upcoming") {
-        api_url = `${process.env.REACT_APP_BACKEND_API_URL}/game/upcoming`;
+        api_url = `${process.env.REACT_APP_BACKEND_API_URL}/games/upcoming`;
     } else if (games === "scores") {
         api_url = `${process.env.REACT_APP_SPORTS_API}/${sport}/${games}/?apiKey=${process.env.REACT_APP_SPORTS_API_KEY}`;
     }
