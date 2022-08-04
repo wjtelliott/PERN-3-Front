@@ -90,7 +90,7 @@ const UserSettings = ({
                         to={`${linkTo}`}
                         style={{
                             textDecoration: "none",
-                            color: "white",
+                            color: "inherit",
                         }}
                     >
                         <MenuItem onClick={handleCloseUserMenu}>
