@@ -20,6 +20,7 @@ const GameCard = ({gameData, userId}) => {
     // // console.log(MlbPics);
     // console.log(homeOdds);
     // console.log("Game", gameData);
+    //console.log("userId: ", userId);
     return (
         <Card
             sx={{maxWidth: 400, height: 300, backgroundColor: "secondary.dark"}}
@@ -61,15 +62,17 @@ const GameCard = ({gameData, userId}) => {
 
                     <Box gridColumn="span 2"></Box>
 
-                    <Box gridColumn="span 2">
-                        <CardActions sx={{display: "inline-block"}}>
-                            <PlaceBetModal
-                                gameData={gameData}
-                                userId={userId}
-                                key={gameData.game_id}
-                            />
-                        </CardActions>
-                    </Box>
+                    {userId && (
+                        <Box gridColumn="span 2">
+                            <CardActions sx={{display: "inline-block"}}>
+                                <PlaceBetModal
+                                    gameData={gameData}
+                                    userId={userId}
+                                    key={gameData.game_id}
+                                />
+                            </CardActions>
+                        </Box>
+                    )}
                 </Box>
             </CardContent>
         </Card>
