@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
+// import AdbIcon from "@mui/icons-material/Adb";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import UserSettings from "./UserSettings";
 import NavBarPage from "./NavBarPages";
@@ -146,7 +146,7 @@ export default function Navbar({darkMode, toggleDarkMode}) {
                             />
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{display: {xs: "flex", md: "none"}, mr: 1}} />
+                    {/* <AdbIcon sx={{display: {xs: "flex", md: "none"}, mr: 1}} /> */}
                     <Typography
                         variant="h5"
                         noWrap
