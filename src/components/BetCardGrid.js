@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import {useAuth0} from "@auth0/auth0-react";
+
 import GameCard from "./GameCard";
 import {Grid} from "@mui/material";
 import "../App.css";
@@ -8,6 +10,15 @@ import {mlbData} from "./Data-Handling/TestData";
 // soccer_usa_mls   basketball_wnba
 export default function BetCardGrid({sport, games}) {
     const [gameData, setGameData] = useState([]);
+    const [userId, setUserId] = useState("");
+    const {user, isAuthenticated, isLoading} = useAuth0();
+
+    useEffect(() => {
+        if (!isLoading && isAuthenticated) {
+            setUserId(user.sub);
+            // console.log(userId);
+        }
+    }, [isLoading]);
 
     let api_url;
     if (games === "upcoming") {
@@ -56,7 +67,11 @@ export default function BetCardGrid({sport, games}) {
                     style={{textAlign: "center"}}
                     key={game.game_id}
                 >
-                    <GameCard gameData={game} key={game.game_id} />
+                    <GameCard
+                        gameData={game}
+                        userId={userId}
+                        key={game.game_id}
+                    />
                 </Grid>
             ))}
         </Grid>

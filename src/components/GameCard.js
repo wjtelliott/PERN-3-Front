@@ -11,7 +11,7 @@ import {MlbTeamPics} from "./Shared/MlbTeamPicDict";
 import {Typography} from "@mui/material";
 // import { testData } from "./Data-Handling/TestData";
 
-const GameCard = ({gameData}) => {
+const GameCard = ({gameData, userId}) => {
     // const [gameData, setGameData] = useState(props.gameData);
     // // console.log(gameData.game_bookmakers[0].markets[0].outcomes);
     // const [homeOdds, setHomeOdds] = useState(
@@ -65,6 +65,7 @@ const GameCard = ({gameData}) => {
                         <CardActions sx={{display: "inline-block"}}>
                             <PlaceBetModal
                                 gameData={gameData}
+                                userId={userId}
                                 key={gameData.game_id}
                             />
                         </CardActions>
