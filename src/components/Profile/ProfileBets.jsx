@@ -107,7 +107,11 @@ export default function ProfileBets() {
                     value={value}
                     onChange={handleChange}
                     aria-label="profile bet tabs"
-                    sx={{px: 2, d: "flex", justifyContent: "center"}}
+                    sx={{
+                        px: 2,
+                        d: "flex",
+                        justifyContent: "center",
+                    }}
                 >
                     <Tab label="Current Bets" {...a11yProps(0)} />
                     <Tab
