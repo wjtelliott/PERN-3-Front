@@ -89,7 +89,7 @@ function App() {
             MuiTab: {
                 defaultProps: {
                     style: {
-                        color: "white",
+                        color: "black",
                         textTransform: "none",
                     },
                 },
