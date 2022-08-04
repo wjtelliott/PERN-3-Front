@@ -1,9 +1,10 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import BetTab from "./ProfileBetTabs";
 import {useAuth0} from "@auth0/auth0-react";
+import BetHistoryCardGallery from "./BetHistoryCardGallery";
 
 export default function ProfileBets() {
     const [value, setValue] = useState(0);
@@ -43,56 +44,17 @@ export default function ProfileBets() {
     }
 
     // This could be refactored to be more DRY
-    const currentUserGames = userBets
-        .filter((game) => !game.game_is_completed)
-        .map((game) => {
-            return (
-                <div>
-                    <p>
-                        Here is a game that is not completed:{" "}
-                        {JSON.stringify(game)}
-                    </p>
-                </div>
-            );
-        });
+    const currentUserGames = userBets.filter((game) => !game.game_is_completed);
 
-    const previousUserGames = userBets
-        .filter((game) => game.game_is_completed)
-        .map((game) => {
-            return (
-                <div>
-                    <p>
-                        Here is a game that is completed: {JSON.stringify(game)}
-                    </p>
-                </div>
-            );
-        });
+    const previousUserGames = userBets.filter((game) => game.game_is_completed);
 
-    const previousUserGamesLost = userBets
-        .filter((game) => game.game_is_completed && !game.bet_success)
-        .map((game) => {
-            return (
-                <div>
-                    <p>
-                        Here is a game that the bet was lost!:{" "}
-                        {JSON.stringify(game)}
-                    </p>
-                </div>
-            );
-        });
+    const previousUserGamesLost = previousUserGames.filter(
+        (game) => !game.bet_success
+    );
 
-    const previousUserGamesWon = userBets
-        .filter((game) => game.game_is_completed && game.bet_success)
-        .map((game) => {
-            return (
-                <div>
-                    <p>
-                        Here is a game that the bet was won!:{" "}
-                        {JSON.stringify(game)}
-                    </p>
-                </div>
-            );
-        });
+    const previousUserGamesWon = previousUserGames.filter(
+        (game) => game.bet_success
+    );
 
     return (
         <Box sx={{width: "100%"}}>
@@ -136,16 +98,16 @@ export default function ProfileBets() {
                 </Tabs>
             </Box>
             <BetTab value={value} index={0}>
-                {currentUserGames}
+                <BetHistoryCardGallery bets={currentUserGames} />
             </BetTab>
             <BetTab value={value} index={1}>
-                {previousUserGames}
+                <BetHistoryCardGallery bets={previousUserGames} />
             </BetTab>
             <BetTab value={value} index={2}>
-                {previousUserGamesWon}
+                <BetHistoryCardGallery bets={previousUserGamesWon} />
             </BetTab>
             <BetTab value={value} index={3}>
-                {previousUserGamesLost}
+                <BetHistoryCardGallery bets={previousUserGamesLost} />
             </BetTab>
         </Box>
     );
