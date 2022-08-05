@@ -9,6 +9,7 @@ import PlaceBetModal from "./PlaceBetModal";
 import "../App.css";
 import {MlbTeamPics} from "./Shared/MlbTeamPicDict";
 import {Typography} from "@mui/material";
+import {convertDate} from "./Shared/UtilFunctions";
 // import { testData } from "./Data-Handling/TestData";
 
 const GameCard = ({gameData, userId}) => {
@@ -20,6 +21,8 @@ const GameCard = ({gameData, userId}) => {
     // // console.log(MlbPics);
     // console.log(homeOdds);
     // console.log("Game", gameData);
+    //console.log("userId: ", userId);
+
     return (
         <Card
             sx={{maxWidth: 400, height: 300, backgroundColor: "secondary.dark"}}
@@ -31,21 +34,6 @@ const GameCard = ({gameData, userId}) => {
                     gap={2}
                     // sx={{backgroundColor: "success.main"}}
                 >
-                    <Box gridColumn="span 2">
-                        {" "}
-                        <img
-                            src={MlbTeamPics[gameData.game_home_team]}
-                            alt={gameData.game_home_team}
-                            height="50px"
-                        />
-                        <br />
-                        {gameData.game_home_team}
-                        <Typography variant="h6">
-                            {gameData.game_home_moneyline}
-                        </Typography>
-                    </Box>
-
-                    <Box gridColumn="span 2">VS</Box>
                     <Box gridColumn="span 2">
                         <img
                             src={MlbTeamPics[gameData.game_away_team]}
@@ -59,17 +47,40 @@ const GameCard = ({gameData, userId}) => {
                         </Typography>
                     </Box>
 
+                    <Box gridColumn="span 2">
+                        <Typography variant="h6">
+                            {convertDate(gameData.game_start_time)}
+                        </Typography>
+                        <Typography variant="h6" mt={3}>
+                            VS
+                        </Typography>
+                    </Box>
+                    <Box gridColumn="span 2">
+                        <img
+                            src={MlbTeamPics[gameData.game_home_team]}
+                            alt={gameData.game_home_team}
+                            height="50px"
+                        />
+                        <br />
+                        {gameData.game_home_team}
+                        <Typography variant="h6">
+                            {gameData.game_home_moneyline}
+                        </Typography>
+                    </Box>
+
                     <Box gridColumn="span 2"></Box>
 
-                    <Box gridColumn="span 2">
-                        <CardActions sx={{display: "inline-block"}}>
-                            <PlaceBetModal
-                                gameData={gameData}
-                                userId={userId}
-                                key={gameData.game_id}
-                            />
-                        </CardActions>
-                    </Box>
+                    {userId && (
+                        <Box gridColumn="span 2">
+                            <CardActions sx={{display: "inline-block"}}>
+                                <PlaceBetModal
+                                    gameData={gameData}
+                                    userId={userId}
+                                    key={gameData.game_id}
+                                />
+                            </CardActions>
+                        </Box>
+                    )}
                 </Box>
             </CardContent>
         </Card>
