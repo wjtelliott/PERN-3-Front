@@ -11,8 +11,8 @@ const BetHistoryCardGallery = ({bets}) => {
                 justifyContent: "center",
             }}
         >
-            {bets.map((bet) => (
-                <BetHistoryCard gameData={bet} />
+            {bets.map((bet, index) => (
+                <BetHistoryCard key={`betHistoryCard${index}`} gameData={bet} />
             ))}
         </Box>
     );
