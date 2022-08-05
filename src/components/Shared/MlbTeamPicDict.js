@@ -60,3 +60,30 @@ export const MlbTeamPics = {
     "Minnesota Twins":
         "https://upload.wikimedia.org/wikipedia/en/b/b4/Minnesota_Twins_logo_%28low_res%29.svg",
 };
+
+export const MLSTeams = {
+    "Atlanta Dream":
+        "https://upload.wikimedia.org/wikipedia/en/5/54/Atlanta_Dream_logo.svg",
+    "Chicago Sky":
+        "https://upload.wikimedia.org/wikipedia/en/f/fc/Chicago_Sky_logo.svg",
+    "Connecticut Sun":
+        "https://upload.wikimedia.org/wikipedia/en/0/09/Connecticut_Sun_logo.svg",
+    "Indiana Fever":
+        "https://upload.wikimedia.org/wikipedia/en/5/54/Indiana_Fever_logo.svg",
+    "New York Liberty":
+        "https://upload.wikimedia.org/wikipedia/en/a/a1/New_York_Liberty_logo.svg",
+    "Washington Mystics":
+        "https://upload.wikimedia.org/wikipedia/en/7/79/Washington_Mystics_logo.svg",
+    "Dallas Wings":
+        "https://upload.wikimedia.org/wikipedia/en/9/95/Dallas_Wings_logo.svg",
+    "Las Vegas Aces":
+        "https://upload.wikimedia.org/wikipedia/en/f/fb/Las_Vegas_Aces_logo.svg",
+    "Los Angeles Sparks":
+        "https://upload.wikimedia.org/wikipedia/en/9/9f/Los_Angeles_Sparks_logo.svg",
+    "Minnesota Lynx":
+        "https://upload.wikimedia.org/wikipedia/en/7/75/Minnesota_Lynx_logo.svg",
+    "Phoenix Mercury":
+        "https://upload.wikimedia.org/wikipedia/en/a/a6/Phoenix_Mercury_logo.svg",
+    "Seattle Storm":
+        "https://upload.wikimedia.org/wikipedia/en/a/a0/Seattle_Storm_%282021%29_logo.svg",
+};

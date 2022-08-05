@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useContext} from "react";
+import {useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -20,7 +21,7 @@ const UserSettings = ({
     anchorElUser,
 }) => {
     const [userBalance, setUserBalance] = useState("Loading Balance...");
-
+    const navigate = useNavigate();
     useEffect(() => {
         const getData = async () => {
             const url =
@@ -46,7 +47,10 @@ const UserSettings = ({
                 variant="h6"
                 noWrap
                 component="a"
-                href="#"
+                // href="/profile"
+                onClick={() => {
+                    navigate("/profile");
+                }}
                 sx={{
                     mr: 2,
                     // display: {xs: "flex"},
