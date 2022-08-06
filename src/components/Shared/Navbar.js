@@ -40,18 +40,6 @@ const settings = [
         text: "Profile",
         linkTo: "profile",
     },
-    {
-        text: "Bets",
-        linkTo: "bets",
-    },
-    {
-        text: "Friends",
-        linkTo: "friends",
-    },
-    {
-        text: "Groups",
-        linkTo: "groups",
-    },
 ];
 
 export default function Navbar({darkMode, toggleDarkMode}) {

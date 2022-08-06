@@ -18,18 +18,6 @@ export default function ProfileBets() {
         setIsMobile(window.innerWidth < 800);
     }, [window.innerWidth]);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         if (isLoading || !isAuthenticated) return;
-    //         const url =
-    //             (process.env.REACT_APP_GET_USER_BETS_URL ??
-    //                 `http://localhost:3001/bets/profile/`) + user.sub;
-    //         const response = await fetch(url);
-    //         const resData = await response.json();
-    //         setUserBets(resData);
-    //     })();
-    // }, [isLoading]);
-
     if (!isAuthenticated) return null;
 
     const handleChange = (_, newValue) => {
@@ -42,19 +30,6 @@ export default function ProfileBets() {
             "aria-controls": `bet-tabpanel-${index}`,
         };
     }
-
-    // This could be refactored to be more DRY
-    // const currentUserGames = userBets.filter((game) => !game.game_is_completed);
-
-    // const previousUserGames = userBets.filter((game) => game.game_is_completed);
-
-    // const previousUserGamesLost = previousUserGames.filter(
-    //     (game) => !game.bet_success
-    // );
-
-    // const previousUserGamesWon = previousUserGames.filter(
-    //     (game) => game.bet_success
-    // );
 
     return (
         <Box sx={{width: "100%"}}>
@@ -104,10 +79,10 @@ export default function ProfileBets() {
                 <BetHistoryCardGallery betType="history" />
             </BetTab>
             <BetTab value={value} index={2}>
-                <BetHistoryCardGallery betType="lost" />
+                <BetHistoryCardGallery betType="won" />
             </BetTab>
             <BetTab value={value} index={3}>
-                <BetHistoryCardGallery betType="won" />
+                <BetHistoryCardGallery betType="lost" />
             </BetTab>
         </Box>
     );
