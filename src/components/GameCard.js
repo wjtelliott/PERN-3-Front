@@ -12,7 +12,7 @@ import {Typography} from "@mui/material";
 import {convertDate} from "./Shared/UtilFunctions";
 // import { testData } from "./Data-Handling/TestData";
 
-const GameCard = ({gameData, userId}) => {
+const GameCard = ({gameData, userId, sport}) => {
     // const [gameData, setGameData] = useState(props.gameData);
     // // console.log(gameData.game_bookmakers[0].markets[0].outcomes);
     // const [homeOdds, setHomeOdds] = useState(
@@ -22,10 +22,19 @@ const GameCard = ({gameData, userId}) => {
     // console.log(homeOdds);
     // console.log("Game", gameData);
     //console.log("userId: ", userId);
+    const cardBgImage =
+        sport === "baseball_mlb"
+            ? "https://media.istockphoto.com/photos/perfectly-mown-grass-at-the-ball-field-picture-id154969512?k=20&m=154969512&s=612x612&w=0&h=MVEQLgJATvryibyvBGFYHqne0sr_A5Uc7zsSQDs6Akk="
+            : "https://www.sportsfloorsinc.com/wp-content/uploads/2017/12/bg-court.jpg";
 
     return (
         <Card
-            sx={{maxWidth: 400, height: 300, backgroundColor: "secondary.dark"}}
+            sx={{
+                maxWidth: 400,
+                // height: 300,
+                backgroundColor: "secondary.dark",
+                backgroundImage: `url(${cardBgImage})`,
+            }}
         >
             <CardContent>
                 <Box

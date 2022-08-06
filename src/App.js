@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import LandingPage from "./components/Home/Landing";
 import ProfilePage from "./components/Profile/ProfilePage";
 import MLBPage from "./components/LeaguePages/MLB";
+import WNBAPage from "./components/LeaguePages/WNBA";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
 import UserContext from "./context/UserContext";
@@ -115,6 +116,7 @@ function App() {
                         darkMode={darkMode}
                         toggleDarkMode={toggleDarkMode}
                     />
+
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
@@ -123,6 +125,7 @@ function App() {
                             element={<ConfirmProfilePage />}
                         />
                         <Route path="/mlb" element={<MLBPage />} />
+                        <Route path="/wnba" element={<WNBAPage />} />
                     </Routes>
                 </Router>
             </UserContext.Provider>

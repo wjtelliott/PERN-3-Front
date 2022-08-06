@@ -27,8 +27,8 @@ const pages = [
         linkTo: "mlb",
     },
     {
-        text: "Soccer",
-        linkTo: "soccer",
+        text: "WNBA",
+        linkTo: "wnba",
     },
     {
         text: "Other Games",

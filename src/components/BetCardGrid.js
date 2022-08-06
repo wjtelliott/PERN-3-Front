@@ -48,7 +48,7 @@ export default function BetCardGrid({sport, games}) {
             justify="center"
             justifyContent="space-around"
             className="bettingGridItem"
-            // sx={{marginTop: "-150px"}}
+            sx={{marginTop: "-100px"}}
         >
             {/* {gameData.slice(0, 8).map((game, i) => ( */}
             {gameData.map((game, i) => (
@@ -69,6 +69,7 @@ export default function BetCardGrid({sport, games}) {
                     <GameCard
                         gameData={game}
                         userId={userId}
+                        sport={sport}
                         key={game.game_id}
                     />
                 </Grid>
