@@ -3,6 +3,8 @@ import BetCardGrid from "../BetCardGrid";
 import Navbar from "../Shared/Navbar";
 
 const MLBPage = () => {
+    document.title = `MLB | YouBetcha`;
+
     return (
         <>
             <img
