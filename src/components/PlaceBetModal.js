@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {useNavigate} from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -13,6 +13,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import UserContext from "../context/UserContext";
 
 const style = {
     position: "absolute",
@@ -33,6 +34,7 @@ export default function PlaceBetModal({gameData, userId}) {
     const [radioValue, setRadioValue] = useState(gameData.game_home_team);
     const [betAmount, setBetAmount] = useState();
     const navigate = useNavigate();
+    const {setUserBalance} = useContext(UserContext);
 
     // const [inputBet, setInputBet] = useState(0);
 
@@ -42,7 +44,7 @@ export default function PlaceBetModal({gameData, userId}) {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log("I was clicked!", betAmount);
+        //console.log("I was clicked!", betAmount);
 
         //     router.post("/new", async (req, res) => {
         // try {
@@ -58,13 +60,14 @@ export default function PlaceBetModal({gameData, userId}) {
                 game_id: gameData.game_id,
             }),
         };
-        console.log(requestOptions);
+        //console.log(requestOptions);
         const response = await fetch(
             `${process.env.REACT_APP_BACKEND_API_URL}/bets/new`,
             requestOptions
         );
         const data = await response.json();
-        console.log("POST BET", data);
+        //console.log("POST BET", data);
+        if (data?.amount) setUserBalance(data.amount.toFixed(2));
         navigate("/profile");
     };
 
