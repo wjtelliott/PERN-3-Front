@@ -9,14 +9,7 @@ import BetHistoryCardGallery from "./BetHistoryCardGallery";
 export default function ProfileBets() {
     const [value, setValue] = useState(0);
 
-    //const [userBets, setUserBets] = useState([]);
-    const [isMobile, setIsMobile] = useState(false);
-
-    const {user, isAuthenticated, isLoading} = useAuth0();
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 800);
-    }, [window.innerWidth]);
+    const {isAuthenticated} = useAuth0();
 
     if (!isAuthenticated) return null;
 
@@ -62,14 +55,8 @@ export default function ProfileBets() {
                         label="Bet History"
                         {...a11yProps(1)}
                     />
-                    <Tab
-                        label={(!isMobile ? "Previous " : "") + "Bets Won"}
-                        {...a11yProps(2)}
-                    />
-                    <Tab
-                        label={(!isMobile ? "Previous " : "") + "Bets Lost"}
-                        {...a11yProps(3)}
-                    />
+                    <Tab label={"Bets Won"} {...a11yProps(2)} />
+                    <Tab label={"Bets Lost"} {...a11yProps(3)} />
                 </Tabs>
             </Box>
             <BetTab value={value} index={0}>

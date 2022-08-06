@@ -39,6 +39,7 @@ const LandingPage = () => {
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "center",
+                    my: 3,
                 }}
             >
                 <Box
@@ -50,44 +51,7 @@ const LandingPage = () => {
                     }}
                     data-aos="fade-up"
                 >
-                    Games to bet on
                     <BetCardGrid sport="baseball_mlb" games="upcoming" />
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                        width: "90%",
-                    }}
-                    data-aos="fade-up"
-                >
-                    Games to lose on:
-                    <BetCardGrid />
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                        width: "90%",
-                    }}
-                    data-aos="fade-up"
-                >
-                    Games games games
-                    <BetCardGrid />
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                        width: "90%",
-                    }}
-                    data-aos="fade-up"
-                >
-                    Some more games
-                    <BetCardGrid />
                 </Box>
             </Box>
         </div>
