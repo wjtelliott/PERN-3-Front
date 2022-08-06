@@ -21,7 +21,6 @@ const UserSettings = ({
     handleOpenUserMenu,
     anchorElUser,
 }) => {
-
     const navigate = useNavigate();
     const {userBalance, setUserBalance} = useContext(UserContext);
 
@@ -56,13 +55,14 @@ const UserSettings = ({
                 }}
                 sx={{
                     mr: 2,
-                    // display: {xs: "flex"},
+                    display: {xs: "none", sm: "none", md: "inline"},
                     // flexGrow: 1,
                     // fontFamily: "monospace",
                     fontWeight: 700,
                     // letterSpacing: ".3rem",
                     color: "inherit",
                     textDecoration: "none",
+                    alignSelf: "center",
                 }}
             >
                 {userBalance === -1 ? "Loading balance..." : `$${userBalance}`}

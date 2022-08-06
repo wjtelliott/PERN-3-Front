@@ -34,7 +34,7 @@ export default function PlaceBetModal({gameData, userId}) {
     const [radioValue, setRadioValue] = useState(gameData.game_home_team);
     const [betAmount, setBetAmount] = useState();
     const navigate = useNavigate();
-    const {setUserBalance} = useContext(UserContext);
+    const {userBalance, setUserBalance} = useContext(UserContext);
 
     // const [inputBet, setInputBet] = useState(0);
 
@@ -86,6 +86,19 @@ export default function PlaceBetModal({gameData, userId}) {
                     {/* Inserted TeamSelectRadio here*/}
                     <form>
                         <FormControl>
+                            {userBalance !== -1 && (
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        flexWrap: "wrap",
+                                    }}
+                                >
+                                    <Typography>
+                                        Current Balance: ${userBalance}
+                                    </Typography>
+                                </Box>
+                            )}
                             <FormLabel id="demo-controlled-radio-buttons-group">
                                 Select a team to bet on
                             </FormLabel>

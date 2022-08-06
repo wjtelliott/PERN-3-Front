@@ -9,26 +9,7 @@ import BetHistoryCardGallery from "./BetHistoryCardGallery";
 export default function ProfileBets() {
     const [value, setValue] = useState(0);
 
-    //const [userBets, setUserBets] = useState([]);
-    const [isMobile, setIsMobile] = useState(false);
-
-    const {user, isAuthenticated, isLoading} = useAuth0();
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 800);
-    }, [window.innerWidth]);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         if (isLoading || !isAuthenticated) return;
-    //         const url =
-    //             (process.env.REACT_APP_GET_USER_BETS_URL ??
-    //                 `http://localhost:3001/bets/profile/`) + user.sub;
-    //         const response = await fetch(url);
-    //         const resData = await response.json();
-    //         setUserBets(resData);
-    //     })();
-    // }, [isLoading]);
+    const {isAuthenticated} = useAuth0();
 
     if (!isAuthenticated) return null;
 
@@ -42,19 +23,6 @@ export default function ProfileBets() {
             "aria-controls": `bet-tabpanel-${index}`,
         };
     }
-
-    // This could be refactored to be more DRY
-    // const currentUserGames = userBets.filter((game) => !game.game_is_completed);
-
-    // const previousUserGames = userBets.filter((game) => game.game_is_completed);
-
-    // const previousUserGamesLost = previousUserGames.filter(
-    //     (game) => !game.bet_success
-    // );
-
-    // const previousUserGamesWon = previousUserGames.filter(
-    //     (game) => game.bet_success
-    // );
 
     return (
         <Box sx={{width: "100%"}}>
@@ -87,14 +55,8 @@ export default function ProfileBets() {
                         label="Bet History"
                         {...a11yProps(1)}
                     />
-                    <Tab
-                        label={(!isMobile ? "Previous " : "") + "Bets Won"}
-                        {...a11yProps(2)}
-                    />
-                    <Tab
-                        label={(!isMobile ? "Previous " : "") + "Bets Lost"}
-                        {...a11yProps(3)}
-                    />
+                    <Tab label={"Bets Won"} {...a11yProps(2)} />
+                    <Tab label={"Bets Lost"} {...a11yProps(3)} />
                 </Tabs>
             </Box>
             <BetTab value={value} index={0}>
@@ -104,10 +66,10 @@ export default function ProfileBets() {
                 <BetHistoryCardGallery betType="history" />
             </BetTab>
             <BetTab value={value} index={2}>
-                <BetHistoryCardGallery betType="lost" />
+                <BetHistoryCardGallery betType="won" />
             </BetTab>
             <BetTab value={value} index={3}>
-                <BetHistoryCardGallery betType="won" />
+                <BetHistoryCardGallery betType="lost" />
             </BetTab>
         </Box>
     );
