@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import {Link} from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const UserSettings = ({
     loggedIn,
@@ -19,7 +20,7 @@ const UserSettings = ({
     handleOpenUserMenu,
     anchorElUser,
 }) => {
-    const [userBalance, setUserBalance] = useState("Loading Balance...");
+    const {userBalance, setUserBalance} = useContext(UserContext);
 
     useEffect(() => {
         const getData = async () => {
@@ -33,10 +34,10 @@ const UserSettings = ({
 
         getData()
             .then((balance) => {
-                setUserBalance("$" + (balance?.amount ?? "undef"));
+                setUserBalance(balance?.amount ?? -1);
             })
             .catch((err) => {
-                setUserBalance("ERR");
+                setUserBalance(-1);
             });
     }, []);
 
@@ -58,7 +59,7 @@ const UserSettings = ({
                     textDecoration: "none",
                 }}
             >
-                {`${userBalance}`}
+                {userBalance === -1 ? "Loading balance..." : `$${userBalance}`}
             </Typography>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
