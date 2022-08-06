@@ -20,7 +20,7 @@ const LandingPage = () => {
                 }}
             >
                 <img
-                    src="https://miro.medium.com/max/1400/0*X-QprUmCHQzN1few.jpg"
+                    src="/sports-banner.jpg" //"https://miro.medium.com/max/1400/0*X-QprUmCHQzN1few.jpg"
                     style={{width: "75%", height: "auto"}}
                 ></img>
             </Box>
@@ -61,7 +61,7 @@ const LandingPage = () => {
                         width: "90%",
                     }}
                     data-aos="fade-up"
-                    data-aos-delay="300"
+                    data-aos-delay="500"
                 >
                     <BetCardGrid sport="baseball_mlb" games="upcoming" />
                 </Box>
@@ -75,7 +75,7 @@ const LandingPage = () => {
                     my: 3,
                 }}
                 data-aos="fade-up"
-                data-aos-delay="300"
+                data-aos-delay="500"
             >
                 <div
                     style={{
