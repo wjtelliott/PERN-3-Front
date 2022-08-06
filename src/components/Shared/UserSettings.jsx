@@ -111,7 +111,7 @@ const UserSettings = ({
                     key="logout"
                     onClick={() =>
                         logout({
-                            returnTo: window.location.origin,
+                            returnTo: process.env.REACT_APP_FRONTEND_URL,
                         })
                     }
                 >
