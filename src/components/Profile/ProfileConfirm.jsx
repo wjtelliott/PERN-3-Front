@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import {Box, SvgIcon, Typography} from "@mui/material";
 import {ReactComponent as LoadingSvg} from "../../assets/loading.svg";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const ConfirmProfilePage = () => {
     const {user, isAuthenticated, isLoading} = useAuth0();
-
+    const navigate = useNavigate();
     const [tooLong, setTooLong] = useState(false);
 
     useEffect(() => {
@@ -14,17 +14,18 @@ const ConfirmProfilePage = () => {
 
         // if a user comes to this page without being authenticated or having data, redirect to home page
         if (!user || !isAuthenticated) {
-            window.location.href = "/";
+            navigate("/");
             return;
         }
 
         const sendUserData = async () => {
-            const url = `http://localhost:3001/users/newuser`;
+            const url = `${process.env.REACT_APP_BACKEND_API_URL}/users/newuser`;
+            console.log("Profile confirm component", url);
             const payload = {
                 ...user,
                 // If we want more user data sent to the back-end, we can add that here
             };
-
+            console.log("payload", payload);
             await fetch(url, {
                 method: "POST",
                 mode: "cors",
@@ -33,7 +34,10 @@ const ConfirmProfilePage = () => {
                 },
                 body: JSON.stringify(payload),
             });
-            window.location.href = window.location.origin;
+            // window.location.href = window.location.origin;
+
+            navigate("/");
+            return;
         };
 
         sendUserData();

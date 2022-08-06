@@ -3,21 +3,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Auth0Provider } from "@auth0/auth0-react";
+import {Auth0Provider} from "@auth0/auth0-react";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const redirectUri = window.location.origin + '/profile/confirm';
+const redirectUri = process.env.REACT_APP_FRONTEND_URL + "/profile/confirm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  
-  <Auth0Provider
-    domain={domain}
-    clientId={clientId}
-    redirectUri={redirectUri}
-  >
-    <App />
-  </Auth0Provider>
+    <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        redirectUri={redirectUri}
+    >
+        <App />
+    </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
