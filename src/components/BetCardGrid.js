@@ -28,7 +28,6 @@ export default function BetCardGrid({sport, games}) {
     }
 
     useEffect(() => {
-        document.title = `MLB | YouBetcha`;
         const fetchData = async () => {
             const response = await fetch(api_url);
             const resData = await response.json();
