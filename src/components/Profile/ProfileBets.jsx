@@ -9,7 +9,7 @@ import BetHistoryCardGallery from "./BetHistoryCardGallery";
 export default function ProfileBets() {
     const [value, setValue] = useState(0);
 
-    const [userBets, setUserBets] = useState([]);
+    //const [userBets, setUserBets] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
 
     const {user, isAuthenticated, isLoading} = useAuth0();
@@ -18,17 +18,17 @@ export default function ProfileBets() {
         setIsMobile(window.innerWidth < 800);
     }, [window.innerWidth]);
 
-    useEffect(() => {
-        (async () => {
-            if (isLoading || !isAuthenticated) return;
-            const url =
-                (process.env.REACT_APP_GET_USER_BETS_URL ??
-                    `http://localhost:3001/bets/profile/`) + user.sub;
-            const response = await fetch(url);
-            const resData = await response.json();
-            setUserBets(resData);
-        })();
-    }, [isLoading]);
+    // useEffect(() => {
+    //     (async () => {
+    //         if (isLoading || !isAuthenticated) return;
+    //         const url =
+    //             (process.env.REACT_APP_GET_USER_BETS_URL ??
+    //                 `http://localhost:3001/bets/profile/`) + user.sub;
+    //         const response = await fetch(url);
+    //         const resData = await response.json();
+    //         setUserBets(resData);
+    //     })();
+    // }, [isLoading]);
 
     if (!isAuthenticated) return null;
 
@@ -44,17 +44,17 @@ export default function ProfileBets() {
     }
 
     // This could be refactored to be more DRY
-    const currentUserGames = userBets.filter((game) => !game.game_is_completed);
+    // const currentUserGames = userBets.filter((game) => !game.game_is_completed);
 
-    const previousUserGames = userBets.filter((game) => game.game_is_completed);
+    // const previousUserGames = userBets.filter((game) => game.game_is_completed);
 
-    const previousUserGamesLost = previousUserGames.filter(
-        (game) => !game.bet_success
-    );
+    // const previousUserGamesLost = previousUserGames.filter(
+    //     (game) => !game.bet_success
+    // );
 
-    const previousUserGamesWon = previousUserGames.filter(
-        (game) => game.bet_success
-    );
+    // const previousUserGamesWon = previousUserGames.filter(
+    //     (game) => game.bet_success
+    // );
 
     return (
         <Box sx={{width: "100%"}}>
@@ -98,16 +98,16 @@ export default function ProfileBets() {
                 </Tabs>
             </Box>
             <BetTab value={value} index={0}>
-                <BetHistoryCardGallery bets={currentUserGames} />
+                <BetHistoryCardGallery betType="curr" />
             </BetTab>
             <BetTab value={value} index={1}>
-                <BetHistoryCardGallery bets={previousUserGames} />
+                <BetHistoryCardGallery betType="history" />
             </BetTab>
             <BetTab value={value} index={2}>
-                <BetHistoryCardGallery bets={previousUserGamesWon} />
+                <BetHistoryCardGallery betType="lost" />
             </BetTab>
             <BetTab value={value} index={3}>
-                <BetHistoryCardGallery bets={previousUserGamesLost} />
+                <BetHistoryCardGallery betType="won" />
             </BetTab>
         </Box>
     );
