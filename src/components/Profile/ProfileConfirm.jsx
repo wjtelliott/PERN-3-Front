@@ -20,11 +20,12 @@ const ConfirmProfilePage = () => {
 
         const sendUserData = async () => {
             const url = `${process.env.REACT_APP_BACKEND_API_URL}/users/newuser`;
+            console.log("Profile confirm component", url);
             const payload = {
                 ...user,
                 // If we want more user data sent to the back-end, we can add that here
             };
-
+            console.log("payload", payload);
             await fetch(url, {
                 method: "POST",
                 mode: "cors",
@@ -34,7 +35,9 @@ const ConfirmProfilePage = () => {
                 body: JSON.stringify(payload),
             });
             // window.location.href = window.location.origin;
+
             navigate("/");
+            return;
         };
 
         sendUserData();
