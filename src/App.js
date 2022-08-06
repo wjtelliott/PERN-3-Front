@@ -9,9 +9,12 @@ import MLBPage from "./components/LeaguePages/MLB";
 import WNBAPage from "./components/LeaguePages/WNBA";
 import ConfirmProfilePage from "./components/Profile/ProfileConfirm";
 import Navbar from "./components/Shared/Navbar";
+import UserContext from "./context/UserContext";
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
+
+    const [userBalance, setUserBalance] = useState(0);
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -102,22 +105,30 @@ function App() {
     return (
         <ThemeProvider theme={appliedTheme}>
             <CssBaseline />
-            {/*
-             * Do we want the react-router here or in the index.js?
-             */}
-            <Router>
-                <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
-                    <Route
-                        path="/profile/confirm"
-                        element={<ConfirmProfilePage />}
+            <UserContext.Provider
+                value={{
+                    userBalance: userBalance,
+                    setUserBalance: setUserBalance,
+                }}
+            >
+                <Router>
+                    <Navbar
+                        darkMode={darkMode}
+                        toggleDarkMode={toggleDarkMode}
                     />
-                    <Route path="/mlb" element={<MLBPage />} />
-                    <Route path="/wnba" element={<WNBAPage />} />
-                </Routes>
-            </Router>
+
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route
+                            path="/profile/confirm"
+                            element={<ConfirmProfilePage />}
+                        />
+                        <Route path="/mlb" element={<MLBPage />} />
+                        <Route path="/wnba" element={<WNBAPage />} />
+                    </Routes>
+                </Router>
+            </UserContext.Provider>
         </ThemeProvider>
     );
 }

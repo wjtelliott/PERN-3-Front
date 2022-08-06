@@ -3,7 +3,9 @@ import BetCardGrid from "../BetCardGrid";
 import {CardMedia} from "@mui/material";
 
 const MLBPage = () => {
-    document.title = "MLB | YouBetcha";
+
+    document.title = `MLB | YouBetcha`;
+
     return (
         <>
             <CardMedia

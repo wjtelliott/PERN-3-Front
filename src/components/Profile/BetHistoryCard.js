@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import {MlbTeamPics} from "../Shared/MlbTeamPicDict";
 import {Typography} from "@mui/material";
+import {convertDate} from "../Shared/UtilFunctions";
 
 const BetHistoryCard = ({gameData}) => {
     // Change this to actual colors later
@@ -51,6 +52,32 @@ const BetHistoryCard = ({gameData}) => {
                     gap={2}
                 >
                     <Box sx={{justifySelf: "center"}} gridColumn="span 2">
+                        <img
+                            src={MlbTeamPics[gameData.game_away_team]}
+                            alt={gameData.game_away_team}
+                            height={
+                                gameData.bet_team === gameData.game_away_team
+                                    ? "60px"
+                                    : "50px"
+                            }
+                            style={
+                                gameData.bet_team === gameData.game_away_team
+                                    ? teamBetStyle
+                                    : null
+                            }
+                        />
+                        <br />
+                        <Typography variant="h6">
+                            {gameData.game_away_moneyline}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{alignSelf: "center", justifySelf: "center"}}
+                        gridColumn="span 2"
+                    >
+                        VS
+                    </Box>
+                    <Box sx={{justifySelf: "center"}} gridColumn="span 2">
                         {" "}
                         <img
                             src={MlbTeamPics[gameData.game_home_team]}
@@ -71,36 +98,20 @@ const BetHistoryCard = ({gameData}) => {
                             {gameData.game_home_moneyline}
                         </Typography>
                     </Box>
-
-                    <Box
-                        sx={{alignSelf: "center", justifySelf: "center"}}
-                        gridColumn="span 2"
-                    >
-                        VS
-                    </Box>
-
-                    <Box sx={{justifySelf: "center"}} gridColumn="span 2">
-                        <img
-                            src={MlbTeamPics[gameData.game_away_team]}
-                            alt={gameData.game_away_team}
-                            height={
-                                gameData.bet_team === gameData.game_away_team
-                                    ? "60px"
-                                    : "50px"
-                            }
-                            style={
-                                gameData.bet_team === gameData.game_away_team
-                                    ? teamBetStyle
-                                    : null
-                            }
-                        />
-                        <br />
-                        <Typography variant="h6">
-                            {gameData.game_away_moneyline}
-                        </Typography>
-                    </Box>
                 </Box>
-                {gameData.game_is_completed && (
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        justifySelf: "center",
+                        flexWrap: "nowrap",
+                    }}
+                >
+                    <Typography variant="p">
+                        {convertDate(gameData.game_start_time)}
+                    </Typography>
+                </Box>
+                {gameData.game_is_completed ? (
                     <Box
                         sx={{
                             display: "flex",
@@ -109,10 +120,23 @@ const BetHistoryCard = ({gameData}) => {
                             flexWrap: "nowrap",
                         }}
                     >
-                        <p>
+                        <Typography variant="p">
                             You {["lost", "won"][+gameData.bet_success]}:&nbsp;$
                             {getBetHistoryDollarAmount()?.toFixed(2) ?? "ERR"}.
-                        </p>
+                        </Typography>
+                    </Box>
+                ) : (
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            justifySelf: "center",
+                            flexWrap: "nowrap",
+                        }}
+                    >
+                        <Typography variant="p">
+                            Bet amount: ${gameData.bet_amount?.toFixed(2)}
+                        </Typography>
                     </Box>
                 )}
             </CardContent>
