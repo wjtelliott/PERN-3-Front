@@ -14,7 +14,7 @@ const ConfirmProfilePage = () => {
 
         // if a user comes to this page without being authenticated or having data, redirect to home page
         if (!user || !isAuthenticated) {
-            window.location.href = "/";
+            navigate("/");
             return;
         }
 
